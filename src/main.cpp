@@ -8,19 +8,22 @@ void setup() {                                             // Arduino setup func
     
                                                            //Config System
     configuracionMain systemConfiguration = {
-    .debugMode = false,                                    // Enable debug mode
-    .fullDiagnosticsPins = true,                           // Run full pin diagnostics
-    .diagnoseAnalog = false,                               // Disable analog diagnostics
-    .diagnoseGPIO = false,                                 // Disable GPIO diagnostics
-    .diagnosePWM = false,                                  // Disable PWM diagnostics
-    .diagnoseUART = true,                                  // Enable UART diagnostics
-    .diagnoseEEPROM = true                                 // Disable EEPROM diagnostics
+                                                                                                             // Byte 0 (bits 0–7)
+        .debugMode = false,                                    // Enable debug mode                          | Byte 0, Bit 0 (LSB)
+        .fullDiagnosticsPins = true,                           // Run full pin diagnostics                   | Byte 0, Bit 1
+        .diagnoseAnalog = false,                               // Disable analog diagnostics                 | Byte 0, Bit 2
+        .diagnoseGPIO = false,                                 // Disable GPIO diagnostics                   | Byte 0, Bit 3
+        .diagnosePWM = false,                                  // Disable PWM diagnostics                    | Byte 0, Bit 4
+        .diagnoseUART = true,                                  // Enable UART diagnostics                    | Byte 0, Bit 5
+        .diagnoseEEPROM = true,                                 // Disable EEPROM diagnostics                | Byte 0, Bit 6
+        .reserved = false                                      // Byte 0, Bit 7 → reservado o libre (MSB)    | Byte 0, Bit 7
     };
+
 
     if (systemConfiguration.fullDiagnosticsPins) fullDiagnosticsPins();
     if (systemConfiguration.diagnoseAnalog) diagnoseAnalog();
     if (systemConfiguration.diagnoseGPIO) diagnoseGPIO();
-    if (systemConfiguration.diagnosePWM)  diagnosePWM();
+    if (systemConfiguration.diagnosePWM)  diagnosePWM(); 
     if (systemConfiguration.diagnoseUART) diagnoseAllUART();
     if (systemConfiguration.diagnoseEEPROM) DiagnosticsEEPROM::runTest();
     if (systemConfiguration.debugMode) debug_init(); 
