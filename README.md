@@ -2,7 +2,7 @@
 
 # ArduinoMega2560
 
-This repository contains code templates, configurations, and documentation** designed for projects based on the Arduino Mega 2560 microcontroller (ATmega2560).  
+This repository contains code templates, configurations, and documentation designed for projects based on the Arduino Mega 2560 microcontroller (ATmega2560).  
 It serves as a starting point or foundation for developers who want to build modular, optimized, and well‑structured applications on the Mega2560 platform.
 
 The goal of this repository is to provide a ready‑to‑use base project that simplifies the setup of new developments.  
