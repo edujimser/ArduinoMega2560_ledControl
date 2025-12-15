@@ -2,11 +2,8 @@
 #include "main.h"
 
 void setup() {                                             // Arduino setup function (runs once at startup)
-                                                           // Otherwise, run in normal execution mode
-    Serial.begin(57600);                                   // start serial communication at 57600 baud
-    while (!Serial);                                       
-    
-                                                           //Config System
+
+                                                               //Config System
     configuracionMain systemConfiguration = {
                                                                                                              // Byte 0 (bits 0–7)
         .debugMode = false,                                    // Enable debug mode                          | Byte 0, Bit 0 (LSB)
@@ -15,10 +12,14 @@ void setup() {                                             // Arduino setup func
         .diagnoseGPIO = false,                                 // Disable GPIO diagnostics                   | Byte 0, Bit 3
         .diagnosePWM = false,                                  // Disable PWM diagnostics                    | Byte 0, Bit 4
         .diagnoseUART = true,                                  // Enable UART diagnostics                    | Byte 0, Bit 5
-        .diagnoseEEPROM = true,                                 // Disable EEPROM diagnostics                | Byte 0, Bit 6
+        .diagnoseEEPROM = true,                                // Disable EEPROM diagnostics                | Byte 0, Bit 6
         .reserved = false                                      // Byte 0, Bit 7 → reservado o libre (MSB)    | Byte 0, Bit 7
     };
 
+                                                           // Otherwise, run in normal execution mode
+    Serial.begin(57600);                                   // start serial communication at 57600 baud
+    while (!Serial);                                       
+    
 
     if (systemConfiguration.fullDiagnosticsPins) fullDiagnosticsPins();
     if (systemConfiguration.diagnoseAnalog) diagnoseAnalog();
@@ -31,4 +32,5 @@ void setup() {                                             // Arduino setup func
 
 
 void loop() {
+    //Code main loop
 } 

@@ -143,7 +143,11 @@ namespace Pins {
         {"PIN_GPIO_46", 46},  // Digital: general input/output 25
         {"PIN_GPIO_47", 47},  // Digital: general input/output 26
         {"PIN_GPIO_48", 48},  // Digital: general input/output 27
-        {"PIN_GPIO_49", 49}   // Digital: general input/output 2189
+        {"PIN_GPIO_49", 49},  // Digital: general input/output 28
+        {"PIN_GPIO_50", 50},  // Digital: general input/output 29
+        {"PIN_GPIO_51", 51},  // Digital: general input/output 30
+        {"PIN_GPIO_52", 52},  // Digital: general input/output 31
+        {"PIN_GPIO_53", 53}   // Digital: general input/output 32
     };
 
     /*
@@ -159,8 +163,47 @@ namespace Pins {
     constexpr size_t NUM_INTERRUPTS = sizeof(INTERRUPTS) / sizeof(INTERRUPTS[0]);
 }
 
+
+
+
 /*
- * 🧪 Pin diagnostic functions
+ * Functions to map pin names or numbers to their physical identifiers across multiple interfaces
+ * Implemented in pins.cpp
+ */
+
+// Checks if a specific pin exists in the GPIO array
+uint8_t pinNameToNumber_GPIO(const char* name);
+
+// Checks if a specific pin exists in the PWM array
+uint8_t pinNameToNumber_PWM(const char* name);
+
+// Checks if a specific pin exists in the ANALOG array
+uint8_t pinNameToNumber_ANALOG(const char* name);
+
+// Converts a PWM pin name (string) to its physical number
+uint8_t pinNameToNumber_PWM(const char* name);
+
+// Converts an ANALOG pin name (string) to its physical number
+uint8_t pinNameToNumber_ANALOG(const char* name);
+
+// Converts an Interrupt pin name (string) to its physical number
+uint8_t pinNameToNumber_Interrupt(const char* name);
+
+// Converts an I2C pin name (string) to its physical number
+uint8_t pinNameToNumber_I2C(const char* name);
+
+// Converts an SPI pin name (string) to its physical number
+uint8_t pinNameToNumber_SPI(const char* name);
+
+// Converts a UART RX pin name (string) to its physical number
+uint8_t pinNameToNumber_UART_RX(const char* name);
+
+// Converts a UART TX pin name (string) to its physical number
+uint8_t pinNameToNumber_UART_TX(const char* name);
+
+
+/*
+ * Pin diagnostic functions
  * Implemented in pins.cpp
  */
 
@@ -174,9 +217,5 @@ void diagnosePWM();
 void fullDiagnosticsPins();
 
 
-
-
-// Checks if a specific pin exists in the GPIO array
-bool isPinInGPIO(int pinNumber);
 
 #endif  // PINS_H

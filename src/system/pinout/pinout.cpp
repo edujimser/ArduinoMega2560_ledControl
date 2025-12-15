@@ -172,21 +172,80 @@ void diagnosePWM() {
 };
 
 
-
-/**
- * @brief Checks if a given pin number exists in the GPIO pin list.
- * 
- * Iterates through Pins::GPIO and compares the physical pin number.
- * 
- * @param pinNumber Physical pin number to check.
- * @return true If the pin is found in the GPIO list.
- * @return false If the pin is not found.
+/*
+ * Functions to map pin names or numbers to their physical identifiers across multiple interfaces
+ * Implemented in pins.cpp
  */
-bool isPinInGPIO(int pinNumber) {
-    for (const auto& gpio : Pins::GPIO) {
-        if (gpio.number == pinNumber) {
-            return true;
+
+uint8_t pinNameToNumber_GPIO(const char*  name){
+    for(const auto& gpio : Pins::GPIO){
+        if (strcmp(gpio.name, name) == 0){
+            return gpio.number;
         }
     }
-    return false;
+    return 0XFF; 
 }
+
+uint8_t pinNameToNumber_PWM(const char*  name){
+    for(const auto& pwm : Pins::PWM){
+        if (strcmp(pwm.name, name) == 0){
+            return pwm.number;
+        }
+    }
+    return 0XFF; 
+}
+
+uint8_t pintNameToNumber_Analog(const char*  name){
+    for(const auto& analog : Pins::ANALOG){
+        if (strcmp(analog.name, name) == 0){
+            return analog.number;
+        }
+    }
+    return 0XFF; 
+}
+
+uint8_t pinNameToNumber_Interrupt(const char*  name){
+    for(const auto& interrupt : Pins::INTERRUPTS){
+        if (strcmp(interrupt.name, name) == 0){
+            return interrupt.number;
+        }
+    }
+    return 0XFF; 
+}
+
+uint8_t pinNameToNumber_I2C(const char*  name){
+    for(const auto& i2c : Pins::I2C){
+        if (strcmp(i2c.name, name) == 0){
+            return i2c.number;
+        }
+    }
+    return 0XFF; 
+}
+
+uint8_t pinNameToNumber_SPI(const char*  name){
+    for(const auto& spi : Pins::SPI){
+        if (strcmp(spi.name, name) == 0){
+            return spi.number;
+        }
+    }
+    return 0XFF; 
+}
+
+uint8_t pinNameToNumber_UART_RX(const char*  name){
+    for(const auto& uart_rx : Pins::UART_RX){
+        if (strcmp(uart_rx.name, name) == 0){
+            return uart_rx.number;
+        }
+    }
+    return 0XFF; 
+}
+
+uint8_t pinNameToNumber_UART_TX(const char*  name){
+    for(const auto& uart_tx : Pins::UART_TX){
+        if (strcmp(uart_tx.name, name) == 0){
+            return uart_tx.number;
+        }
+    }
+    return 0XFF; 
+}
+
