@@ -1,9 +1,6 @@
 #include <Arduino.h>
 #include "main.h"
 
-//INIT PINS
-    PinInfo PIN_DIGITAL_24 = Pins::GPIO[3];
-
 void setup() {                                             // Arduino setup function (runs once at startup)
 
                                                                //Config System
@@ -37,6 +34,5 @@ void setup() {                                             // Arduino setup func
 
 
 void loop() {
-    LedDigital led1(PIN_DIGITAL_24.number, PIN_DIGITAL_24.name, LedDigital::Enum_StateLedDigital::ON, 0, 0);
     
 } 
