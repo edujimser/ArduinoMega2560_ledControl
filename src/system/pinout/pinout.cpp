@@ -188,3 +188,18 @@ const char* pinName(const PinInfo pin) {
 const char* pinFamily(const PinInfo pin) {
     return pin.family;
 }
+
+/* 
+* Returns true if the pin is a valid pin 
+*/
+bool isValidGPIO(const PinInfo& pin) {
+    for (size_t i = 0; i < Pins::NUM_GPIO; ++i) {
+        if (Pins::GPIO[i].number == pin.number &&
+            Pins::GPIO[i].family == pin.family) 
+        {
+            return true;
+        }
+    }
+
+    return false;
+};

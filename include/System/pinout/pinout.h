@@ -182,8 +182,10 @@ const char* pinName(const PinInfo pin);
 // Return pin family
 const char* pinFamily(const PinInfo pin);
 
-
-
+/* 
+* Returns true if the pin is a valid pin 
+*/
+bool isValidGPIO(const PinInfo pin);
 
 /*
  * Pin diagnostic functions
