@@ -2,14 +2,20 @@
 #include "ledControl/ledDigital.h"
 
 
-LedDigital::LedDigital(const PinInfo& p)
-    : pin(p) {}
-
-// Inicializa el pin como salida y apaga el LED
-void LedDigital::begin() {
-    pinMode(pin.number, OUTPUT);
-    digitalWrite(pin.number, LOW);
-    state = false;
+LedDigital::LedDigital(const PinInfo& pin)
+    : pin(pin){
+        
+    if (!isValidGPIO(pin)){
+            Serial.println();
+            Serial.print("LED Digital: Pin inválido -> ");
+            Serial.print("name: ");   Serial.print(pin.name);
+            Serial.print(", number: "); Serial.print(pin.number);
+            Serial.print(", family: "); Serial.println(pin.family);
+            
+            Serial.println();
+            Serial.println("Sistema detenido por error crítico.");
+            cli();
+            while (true) { __asm__("nop"); };};
 }
 
 // Enciende el LED
@@ -24,21 +30,3 @@ void LedDigital::off() {
     state = false;
 }
 
-// Cambia el estado del LED
-void LedDigital::toggle() {
-    state = !state;
-    digitalWrite(pin.number, state ? HIGH : LOW);
-}
-
-// Devuelve el estado actual
-bool LedDigital::getState() const {
-    return state;
-}
-
-// Parpadeo simple bloqueante
-void LedDigital::blink(unsigned long ms) {
-    on();
-    delay(ms);
-    off();
-    delay(ms);
-}

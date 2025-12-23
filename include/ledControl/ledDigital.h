@@ -7,33 +7,15 @@
 
 class LedDigital {
     private:
-        const PinInfo& pin;
-        bool state;
-    
-        public:
-    explicit LedDigital(const PinInfo& pin, bool state)
-        : pin(pin), 
-          state(state)
-        {   
-            if (!isValidGPIO(pin.number)) { Serial.println("LED Digital: Pin inválido"); return; }
-            
-        }
+        const PinInfo& pin;                 //Constructor pin
+        bool state;                         //State of LED
+    public:
+        explicit LedDigital(const PinInfo& pin);
+        
+        void on();                          //On LED
+        void off();                         //Off LED
 
-        void begin();
-        void on();
-        void off();
-        void toggle();
-        bool getState() const;
-        void blink(unsigned long ms);
 };
 
-#endif // LED_H
-        void begin();
-        void on();
-        void off();
-        void toggle();
-        bool getState() const;
-        void blink(unsigned long ms);
-};
 
 #endif // LED_H
