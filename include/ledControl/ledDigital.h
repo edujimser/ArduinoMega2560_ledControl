@@ -12,8 +12,9 @@ class LedDigital {
     public:
         explicit LedDigital(const PinInfo& pin);
         
-        void on();                          //On LED
-        void off();                         //Off LED
+        void on();                                                         //On LED
+        void off();                                                        //Off LED
+        void blinking(int ms_On, int ms_Off);                              //Blinking LED
 
 };
 

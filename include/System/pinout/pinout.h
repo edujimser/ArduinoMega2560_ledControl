@@ -195,7 +195,7 @@ const char* pinFamily(const PinInfo pin);
  * @param pin  PinInfo structure containing pin metadata.
  * @return true if the pin is a valid GPIO pin, false otherwise.
  */
-bool isValidGPIO(const PinInfo pin);
+bool isValidGPIO(const PinInfo& pin);
 
 
 

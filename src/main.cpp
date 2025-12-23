@@ -10,7 +10,7 @@ void setup() {                                                 // Arduino setup 
     //Config System
     configuracionMain systemConfiguration = {
                                                                                                              // Byte 0 (bits 0–7)
-        .debugMode = false,                                    // Enable debug mode                          | Byte 0, Bit 0 (LSB)
+        .debugMode = true,                                    // Enable debug mode                          | Byte 0, Bit 0 (LSB)
         .fullDiagnosticsPins = true,                           // Run full pin diagnostics                   | Byte 0, Bit 1
         .diagnoseAnalog = false,                               // Disable analog diagnostics                 | Byte 0, Bit 2
         .diagnoseGPIO = false,                                 // Disable GPIO diagnostics                   | Byte 0, Bit 3
@@ -142,4 +142,4 @@ void loop() {
     [[maybe_unused]] PinInfo gpio32   =         Pins::GPIO[32];                          /* GPIO53 → pin 53 */      pinMode(gpio32.number, OUTPUT);
 
 
-} 
+}
