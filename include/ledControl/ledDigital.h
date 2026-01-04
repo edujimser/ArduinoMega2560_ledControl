@@ -14,7 +14,7 @@ class LedDigital {
         
         void on();                                                         //On LED
         void off();                                                        //Off LED
-        void blinking(int ms_On, int ms_Off);                              //Blinking LED
+        void blinking(unsigned long ms_On, unsigned long ms_Off);          //Blinking LED
 
 };
 

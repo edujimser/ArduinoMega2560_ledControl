@@ -9,6 +9,8 @@
 #include "system/config/config.h"                                   // System configuration parameters
 #include "system/pinout/pinout.h"                                   // Pinout definitions
 #include "ledControl/ledDigital.h"                                  // LED digital control
+#include "ledControl/ledPWM.h"                                      // LED PWM control
+#include "ledControl/ledRGB.h"                                      // RGB LED control
 
 // Firmware metadata =============================================================================================================================
 #define FIRMWARE_VERSION                 "1.0.B"                                    // Firmware version

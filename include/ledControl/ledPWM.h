@@ -12,14 +12,13 @@ class LedPWM {
     public:
         explicit LedPWM(const PinInfo& pin);
         
-        void on();                                                         //On LED                               
-        void onIntensity(int intensity);                                   //On LED with intensity
+        void on();                                                         //On LED   
+        void off();                                                        //Off LED                            
+        void onIntensity(uint8_t intensity);                               //On LED with intensity
         void onFadeIn(int duration_ms, int steps);                         //Fade In LED
         void onFadeOut(int duration_ms, int steps);                        //Fade Out LED
-        void onFadeTotal(int duration_ms, int steps);                      //Fade In and Out LED
-        void off();                                                        //Off LED
         void blinking(int ms_On, int ms_Off);                              //Blinking LED
-        void blinkingIntensity(int intensity, int ms_On, int ms_Off);      //Blinking LED with intensity
+        void blinkingIntensity(uint8_t intensity, int ms_On, int ms_Off);  //Blinking LED with intensity
 
 };
 

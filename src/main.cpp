@@ -141,5 +141,10 @@ void loop() {
     [[maybe_unused]] PinInfo gpio31   =         Pins::GPIO[31];                          /* GPIO52 → pin 52 */      pinMode(gpio31.number, OUTPUT);
     [[maybe_unused]] PinInfo gpio32   =         Pins::GPIO[32];                          /* GPIO53 → pin 53 */      pinMode(gpio32.number, OUTPUT);
 
+    
 
+
+    LedRGB ledRGB = LedRGB(pwm3, pwm4, pwm5);  // RGB LED connected to PWM pins 3 (Red), 4 (Green), and 5 (Blue)
+
+    ledRGB.setColor(120, 230, 5);
 }

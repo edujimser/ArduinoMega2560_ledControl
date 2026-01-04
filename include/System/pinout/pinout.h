@@ -204,7 +204,7 @@ bool isValidGPIO(const PinInfo& pin);
  * @param pin  PinInfo structure containing pin metadata.
  * @return true if the pin is a valid PWM pin, false otherwise.
  */
-bool isValidPWM(const PinInfo pin);
+bool isValidPWM(const PinInfo& pin);
 
 
 /* -------------------------------------------------------------------------- */

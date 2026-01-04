@@ -32,13 +32,13 @@ void LedDigital::off() {
 }
 
 // Blinking LED
-void LedDigital::blinking(int ms_On, int ms_Off) {
+void LedDigital::blinking(unsigned long ms_On, unsigned long ms_Off) {
     static unsigned long lastChange = 0;
     static bool state = false;
 
     unsigned long now = millis();
 
-    int interval = state ? ms_On : ms_Off;
+    unsigned long interval = state ? ms_On : ms_Off;
 
     if (now - lastChange >= interval) {
         state = !state;
