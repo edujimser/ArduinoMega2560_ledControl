@@ -23,6 +23,7 @@ Instead of starting from scratch, you can clone this repository and immediately 
   - [Installation](#installation)
 - [Project Structure](#project-structure)
 - [Usage](#usage)
+- [Debug](#Debug)
 - [Functions](#functions)
 - [Arduino Mega 2560 Pinout](#arduino-mega-2560-pinout)
 - [PlatformIO Configuration](#platformio-configuration)
@@ -103,6 +104,58 @@ void loop() {
   Serial.println("Hello, Arduino!");
   delay(1000);
 }
+```
+
+## Debug
+This project includes a full debugging system for the Arduino Mega 2560 using **avr-stub**, **GDB**, and an **FT232BL** USB–Serial adapter.  
+This enables professional-level firmware debugging on a microcontroller that does not support hardware debugging natively.
+
+---
+
+###  Requirements
+
+To use the debug mode, you will need:
+
+- Arduino **Mega 2560**
+- **FT232BL** USB–Serial adapter
+- **PlatformIO** (VSCode)
+- The `avr-stub` library (already included in the project)
+- Basic wiring between the FT232BL and the Mega
+
+---
+
+###  FT232BL Wiring
+
+Connect the FT232BL to the Mega 2560 as follows:
+
+| FT232BL | Mega 2560 |
+|---------|-----------|
+| TXD     | RX0 (0)   |
+| RXD     | TX0 (1)   |
+| GND     | GND       |
+
+> The FT232BL is used by GDB to communicate with the microcontroller.
+
+---
+
+###  PlatformIO Configuration
+
+The debug environment is already defined in `platformio.ini`:
+
+```ini
+[env:debug]
+build_type = debug
+debug_tool = custom
+debug_port = /dev/ttyUSB0
+
+build_flags =
+    -DDEBUG_MODE
+    -Og
+    -g
+
+lib_deps =
+    jdolinay/avr-debugger
+
 ```
 
 ## Functions
