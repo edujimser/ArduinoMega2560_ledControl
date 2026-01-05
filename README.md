@@ -1,4 +1,76 @@
+# ArduinoMega2560_ledControl
 
+This project provides a modular and safe LED control system for the **Arduino Mega 2560**.  
+It includes three independent C++ classes designed to control:
+
+- **Digital LEDs** (ON/OFF + non‑blocking blinking)
+- **PWM LEDs** (intensity, fade‑in/out, blinking)
+- **RGB LEDs** (3‑channel PWM color control)
+
+The goal is to offer a clean, reusable, and scalable foundation for lighting‑based Arduino projects.
+
+---
+
+## Project Structure
+
+The project structure is organized as follows:
+
+```
+├── include/
+│   ├── ledControl/
+│   │   ├── ledDigital.h
+│   │   ├── ledPWM.h
+│   │   └── ledRGB.h
+│   └── System/
+│       └── pinout/pinout.h
+├── src/
+│   ├── ledControl/
+│   │   ├── ledDigital.cpp
+│   │   ├── ledPWM.cpp
+│   │   └── ledRGB.cpp
+│   └── main.cpp
+└── platformio.ini
+```
+
+
+---
+
+## 🚀 Features
+
+### **1. LedDigital**
+Simple ON/OFF LED control using a digital pin.
+
+- `on()` — turn LED on  
+- `off()` — turn LED off  
+- `blinking(ms_On, ms_Off)` — non‑blocking blinking  
+- Automatic GPIO pin validation  
+- System halts safely if the pin is invalid  
+
+---
+
+### **2. LedPWM**
+Advanced LED control using PWM pins.
+
+- `on()` — full brightness  
+- `off()` — LED off  
+- `onIntensity(value)` — brightness 0–255  
+- `onFadeIn(duration_ms, steps)` — smooth fade‑in (non‑blocking)  
+- `onFadeOut(duration_ms, steps)` — smooth fade‑out (non‑blocking)  
+- `blinking(ms_On, ms_Off)` — PWM blinking  
+- `blinkingIntensity(intensity, ms_On, ms_Off)` — blinking with custom brightness  
+- Automatic PWM pin validation  
+
+---
+
+### **3. LedRGB**
+Three‑channel RGB LED controller using PWM pins.
+
+- `on()` — full white  
+- `off()` — turn all channels off  
+- `setColor(r, g, b)` — set any RGB color (0–255 per channel)  
+- Validates all three PWM pins before use  
+
+---
 
 # ArduinoMega2560
 
@@ -11,8 +83,6 @@ Instead of starting from scratch, you can clone this repository and immediately 
 - Preconfigured build flags for memory optimization and performance.
 - Example modules for diagnostics, GPIO, PWM, UART, and EEPROM.
 - Documentation templates (README, diagrams, configuration notes) to keep your project organized.
-
-
 
 
 ## Table of Contents
